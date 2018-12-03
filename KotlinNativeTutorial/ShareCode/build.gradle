@@ -1,4 +1,5 @@
 apply plugin: 'kotlin-multiplatform'
+apply plugin: 'kotlinx-serialization'
 
 kotlin {
     targets {
@@ -13,11 +14,45 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api 'org.jetbrains.kotlin:kotlin-stdlib-common'
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+
+            // coroutines
+            implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
+
+            // kotlinx-serialization
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+
+            // ktor
+            implementation "io.ktor:ktor-client-core:$ktor_version"
+            implementation "io.ktor:ktor-client-json:$ktor_version"
         }
 
         androidMain.dependencies {
-            api 'org.jetbrains.kotlin:kotlin-stdlib'
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+
+            // coroutines
+            implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+            // kotlinx-serialization
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
+
+            // ktor
+            implementation "io.ktor:ktor-client-core-jvm:$ktor_version"
+            implementation "io.ktor:ktor-client-json-jvm:$ktor_version"
+        }
+
+        iosMain.dependencies {
+
+            // coroutines
+            implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
+
+            // kotlinx-serialization
+            implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serialization_version"
+
+            // ktor
+            implementation "io.ktor:ktor-client-ios:$ktor_version"
+            implementation "io.ktor:ktor-client-core-ios:$ktor_version"
+            implementation "io.ktor:ktor-client-json-ios:$ktor_version"
         }
     }
 }
