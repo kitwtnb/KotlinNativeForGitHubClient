@@ -7,10 +7,10 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 
-internal class ApiClient(private val baseUrl: String) {
+internal class ApiClient(private val baseUrl: String, serializer: KotlinxSerializer) {
     private val client = HttpClient {
         install(JsonFeature) {
-            this.serializer = KotlinxSerializer()
+            this.serializer = serializer
         }
     }
 
