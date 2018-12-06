@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  iosClient
 //
-//  Created by 石川 雅之 on 2018/12/06.
+//  Created by usayuki on 2018/12/06.
 //  Copyright © 2018 usayuki. All rights reserved.
 //
 
