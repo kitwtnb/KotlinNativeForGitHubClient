@@ -14,9 +14,9 @@ internal class ApiClient(private val baseUrl: String, serializer: KotlinxSeriali
         }
     }
 
-    suspend inline fun <reified T> get(path: String, param: Map<String, String> = emptyMap()): T = client.get(path = path) {
+    suspend inline fun <reified T> get(path: String, param: Map<String, String>? = null): T = client.get(path = path) {
         url(baseUrl)
-        param.forEach {
+        param?.forEach {
             parameter(it.key, it.value)
         }
     }
