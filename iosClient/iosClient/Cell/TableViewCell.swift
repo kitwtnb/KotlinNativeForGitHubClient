@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ShareCode
 
 class TableViewCell: UITableViewCell {
 
@@ -16,6 +17,11 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var starCountLabel: UILabel!
     @IBOutlet weak var forkCountLabel: UILabel!
     
-    func configure() {
+    func configure(_ repository: Item) {
+        self.thumbnailImageView.setImage(from: repository.owner.avatarUrl)
+        self.repositoryNameLabel.text = repository.name
+        self.userNameLabel.text = repository.owner.login
+        self.starCountLabel.text = "\(repository.stargazersCount)"
+        self.forkCountLabel.text = "\(repository.forksCount)"
     }
 }
