@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.activity_search_repository.*
 
 class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
 
-    lateinit var presenter: SearchRepositoryPresenter
-    lateinit var adapter: SearchRepositoryAdapter
+    private lateinit var presenter: SearchRepositoryPresenter
+    private lateinit var adapter: SearchRepositoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
