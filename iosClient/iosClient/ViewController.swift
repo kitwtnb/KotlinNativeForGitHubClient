@@ -25,9 +25,13 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "tableViewCell")
         
+        // SearchBar
+        self.searchBar.delegate = self
+        self.searchBar.showsCancelButton = true
+        
         // ShareCode
         self.presenter = PresenterFactory().getSearchRepositoryPresenter(searchRepositoryView: self)
-        self.search(for: "")
+        self.presenter.loadRepositories()
     }
     
     private func search(for query: String) {
@@ -72,5 +76,18 @@ extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        if let query = searchBar.text, !query.isEmpty {
+            self.search(for: query)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
 }
