@@ -1,10 +1,11 @@
 package com.github.kitwtnb.kotlinnativetutorial.model.data
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Repositories(
-    val total_count: Int,
-    val incomplete_results: Boolean,
+    @SerialName("total_count") val totalCount: Int,
+    @SerialName("incomplete_results") val incompleteResults: Boolean,
     val items: List<Item>
 )
