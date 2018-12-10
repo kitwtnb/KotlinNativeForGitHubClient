@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
 import android.widget.Toast
 import com.github.kitwtnb.kotlinnativetutorial.model.data.Item
 import com.github.kitwtnb.kotlinnativetutorial.presenter.SearchRepositoryPresenter
@@ -28,7 +29,17 @@ class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
             adapter = this@SearchRepositoryActivity.adapter
         }
 
-        presenter.search("kotlin")
+        search_repository.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(searchText: String): Boolean {
+                presenter.search(searchText)
+                search_repository.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
     }
 
     override fun showError(message: String) {
