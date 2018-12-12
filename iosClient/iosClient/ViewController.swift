@@ -11,8 +11,8 @@ import ShareCode
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     private var presenter: SearchRepositoryPresenter!
     private var repositories: [Item] = []
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
         // ShareCode
         self.presenter = PresenterFactory().getSearchRepositoryPresenter(searchRepositoryView: self)
-        self.presenter.loadRepositories()
+        self.presenter.search(query: "swift")
     }
     
     private func search(for query: String) {

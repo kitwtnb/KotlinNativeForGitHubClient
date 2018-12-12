@@ -11,11 +11,11 @@ import ShareCode
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var repositoryNameLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var starCountLabel: UILabel!
-    @IBOutlet weak var forkCountLabel: UILabel!
+    @IBOutlet private weak var thumbnailImageView: UIImageView!
+    @IBOutlet private weak var repositoryNameLabel: UILabel!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var starCountLabel: UILabel!
+    @IBOutlet private weak var forkCountLabel: UILabel!
     
     func configure(_ repository: Item) {
         self.thumbnailImageView.setImage(from: repository.owner.avatarUrl)
