@@ -20,7 +20,7 @@ data class Item(
     @SerialName("created_at") val createdAt: String,
     @SerialName("default_branch") val defaultBranch: String,
     @SerialName("deployments_url") val deploymentsUrl: String,
-    val description: String,
+    val description: String?,
     @SerialName("downloads_url") val downloadsUrl: String,
     @SerialName("events_url") val eventsUrl: String,
     val fork: Boolean,
