@@ -43,6 +43,8 @@ class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
                 return false
             }
         })
+
+        presenter.search("kotlin")
     }
 
     override fun showError(message: String) {
