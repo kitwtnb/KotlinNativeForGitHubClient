@@ -23,11 +23,14 @@ class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
         presenter = PresenterFactory.getSearchRepositoryPresenter(this)
         adapter = SearchRepositoryAdapter()
 
-        with(recycler_view) {
-            layoutManager = LinearLayoutManager(this@SearchRepositoryActivity)
-            addItemDecoration(DividerItemDecoration(this@SearchRepositoryActivity, DividerItemDecoration.VERTICAL))
-            adapter = this@SearchRepositoryActivity.adapter
-        }
+        recycler_view.layoutManager = LinearLayoutManager(this@SearchRepositoryActivity)
+        recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                this@SearchRepositoryActivity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recycler_view.adapter = this@SearchRepositoryActivity.adapter
 
         search_repository.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(searchText: String): Boolean {
@@ -40,6 +43,8 @@ class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
                 return false
             }
         })
+
+        presenter.search("kotlin")
     }
 
     override fun showError(message: String) {
