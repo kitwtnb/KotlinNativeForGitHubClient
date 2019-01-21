@@ -52,6 +52,7 @@ class SearchRepositoryActivity : AppCompatActivity(), SearchRepositoryView {
     }
 
     override fun showRepositories(repositories: List<Item>) {
-        adapter.submitList(repositories)
+        adapter.setItems(repositories)
+        adapter.notifyDataSetChanged()
     }
 }
