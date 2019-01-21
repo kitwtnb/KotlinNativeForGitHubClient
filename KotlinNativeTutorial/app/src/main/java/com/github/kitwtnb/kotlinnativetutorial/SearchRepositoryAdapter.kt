@@ -19,13 +19,11 @@ class SearchRepositoryAdapter : RecyclerView.Adapter<SearchRepositoryAdapter.Ite
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = items[position]
-        with(holder.view) {
-            text_title.text = item.name
-            text_user_name.text = item.owner.login
-            text_star_count.text = item.stargazersCount.toString()
-            text_fork_count.text = item.forksCount.toString()
-            Glide.with(this).load(item.owner.avatarUrl).into(image_thumbnail)
-        }
+        holder.view.text_title.text = item.name
+        holder.view.text_user_name.text = item.owner.login
+        holder.view.text_star_count.text = item.stargazersCount.toString()
+        holder.view.text_fork_count.text = item.forksCount.toString()
+        Glide.with(holder.view).load(item.owner.avatarUrl).into(holder.view.image_thumbnail)
     }
 
     override fun getItemCount(): Int = items.size
