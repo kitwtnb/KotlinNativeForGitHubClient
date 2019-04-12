@@ -11,12 +11,13 @@ import com.github.kitwtnb.kotlinnativetutorial.presenter.SearchRepositoryPresent
 import com.github.kitwtnb.kotlinnativetutorial.presenter.SearchRepositoryPresenterImpl
 import com.github.kitwtnb.kotlinnativetutorial.view.SearchRepositoryView
 import io.ktor.client.features.json.serializer.KotlinxSerializer
+import kotlinx.serialization.json.JSON
 
 object PresenterFactory {
     fun getSearchRepositoryPresenter(searchRepositoryView: SearchRepositoryView): SearchRepositoryPresenter {
         val apiClient = ApiClient(
             baseUrl = "https://api.github.com",
-            serializer = KotlinxSerializer().also {
+            serializer = KotlinxSerializer(JSON.nonstrict).also {
                 it.setMapper(Repositories::class, Repositories.serializer())
                 it.setMapper(Item::class, Item.serializer())
                 it.setMapper(Owner::class, Owner.serializer())
