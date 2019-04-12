@@ -1,3 +1,1 @@
 include ':app', ':ShareCode'
-
-enableFeaturePreview('GRADLE_METADATA')
